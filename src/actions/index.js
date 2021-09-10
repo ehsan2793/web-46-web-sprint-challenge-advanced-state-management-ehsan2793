@@ -5,7 +5,7 @@ export const FATCH_ERROR = 'FATCH_ERROR'
 export const ADD_NEW_SMURF = 'ADD_NEW_SMURF'
 export const ADD_NEW_ERROR = 'ADD_NEW_ERROR'
 
-const fetchSmurfs = () => {
+export const fetchSmurfs = () => {    // havent used it yet
     return (dispatch) => {
         dispatch({ type: FATCH_START })
         axios.get('http://localhost:3333/smurfs')
@@ -17,14 +17,14 @@ const fetchSmurfs = () => {
             })
     }
 }
-const addNewsmurf = (newSmurf) => {                  /// need to finhs this to addd new  smurf herer
+export const addNewsmurf = (newSmurf) => {                  // havent used it yet
     return {
         type: ADD_NEW_SMURF,
         payload: newSmurf
     }
 }
 
-const setErrorMessage = (input) => {
+export const setErrorMessage = (input) => {                  // havent used it yet
     return { type: ADD_NEW_ERROR, payload: input }
 }
 

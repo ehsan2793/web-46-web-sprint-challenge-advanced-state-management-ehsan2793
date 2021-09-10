@@ -2,7 +2,7 @@ import { FATCH_START, FATCH_SUCESS, FATCH_ERROR, ADD_NEW_SMURF, ADD_NEW_ERROR } 
 
 export const initialState = {
     smurfs: [],
-    isloading: false,
+    isLoading: false,
     error: ''
 }
 
@@ -16,7 +16,7 @@ const reducer = (state = initialState, action) => {
         case FATCH_SUCESS:    ///  case to accommodate the successful smurf api fetch.
             return {
                 ...state,
-                isLoading: !state.isloading,
+                isLoading: false,
                 smurfs: action.payload
             }
         case FATCH_ERROR:   // cases to accommodate the failed smurf api fetch.
