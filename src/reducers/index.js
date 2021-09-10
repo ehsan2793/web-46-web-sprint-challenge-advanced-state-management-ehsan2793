@@ -1,5 +1,5 @@
 
-export const initialState = {
+export const initialState = {               /// ===> need 
     smurfs: [],
     isloading: false,
     error: ''
@@ -7,7 +7,34 @@ export const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case "FATCH_START":   /// case to accommodate the start of a smurf fetch.
+            return {
+                ...state,
+                isLoading: !state.isLoading,
+            }
+        case "FATCH_SUCESS":    ///  case to accommodate the successful smurf api fetch.
+            return {
+                ...state,
+                isLoading: !state.isloading,
+                smurfs: action.payload
+            }
+        case "FATCH_ERROR":   // cases to accommodate the failed smurf api fetch.
+            return {
+                ...state,
+                isLoading: !state.isLoading,
+                error: action.payload
+            }
+        case 'ADD_NEW_SMURF':    //  case to accommodate adding a smurf (including the name, nickname including the name, nickname, position,description and an internally generated id)
+            return {
+                ...state,
+                smurfs: [...state.smurfs, action.payload]
+            }
 
+        case 'ADD_NEW_SMURF':    //  case that adds in a value to the error message.
+            return {
+                ...state,
+                error: action.payload
+            }
 
         default:
             return state

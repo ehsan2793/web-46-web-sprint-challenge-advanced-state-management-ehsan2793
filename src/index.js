@@ -13,7 +13,7 @@ import { Provider } from "react-redux";
 
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
-console.log(store.getState());
+
 
 const { worker } = require('./mocks/browser');
 worker.start();
