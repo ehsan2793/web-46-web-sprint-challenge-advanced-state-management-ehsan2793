@@ -17,7 +17,7 @@ export const fetchSmurfs = () => {    // havent used it yet
             })
     }
 }
-export const addNewsmurf = (newSmurf) => {                  // havent used it yet
+export const addSmurf = (newSmurf) => {                  // havent used it yet
     return {
         type: ADD_NEW_SMURF,
         payload: newSmurf
