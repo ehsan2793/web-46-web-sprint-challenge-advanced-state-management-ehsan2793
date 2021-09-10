@@ -2,6 +2,9 @@ import axios from 'axios';
 export const FATCH_START = "FATCH_START"
 export const FATCH_SUCESS = 'FATCH_SUCESS'
 export const FATCH_ERROR = 'FATCH_ERROR'
+export const ADD_NEW_SMURF = 'ADD_NEW_SMURF'
+export const ADD_NEW_ERROR = 'ADD_NEW_ERROR'
+
 const fetchSmurfs = () => {
     return (dispatch) => {
         dispatch({ type: FATCH_START })
@@ -13,6 +16,16 @@ const fetchSmurfs = () => {
                 dispatch({ type: FATCH_ERROR, payload: error.message })
             })
     }
+}
+const addNewsmurf = (newSmurf) => {                  /// need to finhs this to addd new  smurf herer
+    return {
+        type: ADD_NEW_SMURF,
+        payload: newSmurf
+    }
+}
+
+const setErrorMessage = (input) => {
+    return { type: ADD_NEW_ERROR, payload: input }
 }
 
 //Task List:
