@@ -1,4 +1,32 @@
 import axios from 'axios';
+export const FATCH_START = "FATCH_START"
+export const FATCH_SUCESS = 'FATCH_SUCESS'
+export const FATCH_ERROR = 'FATCH_ERROR'
+export const ADD_NEW_SMURF = 'ADD_NEW_SMURF'
+export const ADD_NEW_ERROR = 'ADD_NEW_ERROR'
+
+export const fetchSmurfs = () => {    // havent used it yet
+    return (dispatch) => {
+        dispatch({ type: FATCH_START })
+        axios.get('http://localhost:3333/smurfs')
+            .then((response) => {
+                dispatch({ type: FATCH_SUCESS, payload: response.data })
+            })
+            .catch((error) => {
+                dispatch({ type: FATCH_ERROR, payload: error.message })
+            })
+    }
+}
+export const addSmurf = (newSmurf) => {                  // havent used it yet
+    return {
+        type: ADD_NEW_SMURF,
+        payload: newSmurf
+    }
+}
+
+export const setErrorMessage = (input) => {                  // havent used it yet
+    return { type: ADD_NEW_ERROR, payload: input }
+}
 
 //Task List:
 //1. Add a thunk action called fetchSmurfs that triggers a loading status display in our application, performs an axios call to retreive smurfs from our server, saves the result of that call to our state and shows an error if one is made.

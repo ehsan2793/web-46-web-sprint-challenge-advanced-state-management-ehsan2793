@@ -1,8 +1,49 @@
+import { FATCH_START, FATCH_SUCESS, FATCH_ERROR, ADD_NEW_SMURF, ADD_NEW_ERROR } from '../actions/index'
 
 export const initialState = {
+    smurfs: [],
+    isLoading: false,
+    error: ''
 }
 
-const reducer = ()=>{
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
+        case FATCH_START:   /// case to accommodate the start of a smurf fetch.
+            return {
+                ...state,
+                isLoading: !state.isLoading,
+            }
+        case FATCH_SUCESS:    ///  case to accommodate the successful smurf api fetch.
+            return {
+                ...state,
+                isLoading: false,
+                smurfs: action.payload
+            }
+        case FATCH_ERROR:   // cases to accommodate the failed smurf api fetch.
+            return {
+                ...state,
+                isLoading: !state.isLoading,
+                error: action.payload
+            }
+        case ADD_NEW_SMURF:    //  case to accommodate adding a smurf (including the name, nickname including the name, nickname, position,description and an internally generated id)
+            const newSmurf = {
+                ...action.payload,
+                id: Math.random() * 1000
+            }
+            return {
+                ...state,
+                smurfs: [...state.smurfs, newSmurf]
+            }
+
+        case ADD_NEW_ERROR:    //  case that adds in a value to the error message.
+            return {
+                ...state,
+                error: action.payload
+            }
+
+        default:
+            return state
+    }
 }
 
 //**************DO NOT EDIT ANY CODE BEYOND THIS POINT**************//

@@ -5,15 +5,16 @@ import SmurfList from './components/SmurfList';
 import Header from './components/Header';
 
 import axios from 'axios';
-
+import { connect } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
+import { fetchSmurfs } from "./actions/index";
 
 class App extends Component {
   componentDidMount() {
-    axios.get('http://localhost:3333/smurfs')
-    .then(res => console.log(res))
-    .catch(err => console.log('Axios Error', err));
+    this.props.fetchSmurfs()
+
+
   }
 
   render() {
@@ -21,16 +22,17 @@ class App extends Component {
       <div className="App">
         <Header />
 
+
         <main>
-          <SmurfList/>
-          <AddForm/>
+          <SmurfList />
+          <AddForm />
         </main>
       </div>
     );
   }
 }
 
-export default App;
+export default connect(null, { fetchSmurfs })(App);
 
 //Task List:
 //1. Connect the fetchSmurfs actions to the App component.
